@@ -1,6 +1,6 @@
 
 
-(function (window, document, $, undefined) {
+function HOMEINIT($, undefined) {
     'use strict';
 
     var eduJs = {
@@ -1011,4 +1011,6 @@
     }
     eduJs.i();
 
-})(window, document, jQuery);
+};
+
+//(window, document, jQuery)
