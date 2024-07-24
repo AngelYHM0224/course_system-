@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 
-declare var $:any;
-declare function HOMEINIT([]):any;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,10 +8,4 @@ declare function HOMEINIT([]):any;
 })
 export class AppComponent {
   title = 'courses_onlines';
-
-  constructor(){
-    setTimeout(() =>{
-      HOMEINIT($);
-    }, 50);
-  }
 }
