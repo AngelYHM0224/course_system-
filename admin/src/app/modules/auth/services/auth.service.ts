@@ -49,7 +49,7 @@ export class AuthService implements OnDestroy {
   // public methods
   login(email: string, password: string): Observable<any> {
     this.isLoadingSubject.next(true);
-    return this.http.post(URL_SERVICIOS+"/auth/login",{email: email, password: password}).pipe(
+    return this.http.post(URL_SERVICIOS+"/auth/login", {email: email, password:password}).pipe(
       map((auth: any) => {
         console.log(auth);
         const result = this.setAuthFromLocalStorage(auth);
