@@ -19,6 +19,7 @@ export class UserEditComponent implements OnInit {
   email:any = null;
   password:any = null;
   confirmation_password:any = null;
+  state:any = 1;
 
   IMAGEN_PREVISUALIZA:any = "./assets/media/avatars/300-6.jpg";
   FILE_AVATAR:any = null;
@@ -35,6 +36,7 @@ export class UserEditComponent implements OnInit {
     this.name = this.user.name;
     this.surname = this.user.surname;
     this.email = this.user.email;
+    this.state = this.user.state;
     this.IMAGEN_PREVISUALIZA = this.user.avatar;
   }
 
@@ -69,6 +71,7 @@ export class UserEditComponent implements OnInit {
     formData.append("name",this.name);
     formData.append("surname",this.surname);
     formData.append("email",this.email);
+    formData.append("state",this.state);
     if(this.password){
       formData.append("password",this.password);
     }

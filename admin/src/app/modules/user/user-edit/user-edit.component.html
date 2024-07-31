@@ -85,6 +85,18 @@
                   <input type="email" name="email" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="example@domain.com" [(ngModel)]="email" />
                   <!--end::Input-->
               </div>
+
+              <div class="fv-row mb-7">
+                <!--begin::Label-->
+                <label class="required fw-bold fs-6 mb-2">Status</label>
+                <!--end::Label-->
+                <select class="form-control" name="status" placeholder="Status" [(ngModel)]="state">
+                  <option value="1">Activo</option>
+                  <option value="2">Desactivo</option>
+                </select>
+              </div>
+
+
               <!--end::Input group-->
               <!--begin::Input group-->
               <div class="fv-row mb-7">
@@ -138,7 +150,7 @@
           <div class="text-center pt-15">
               <button type="reset" class="btn btn-light me-3" (click)="modal.dismiss()">Cerrar</button>
               <button type="button" (click)="store()" class="btn btn-primary" data-kt-users-modal-action="submit">
-                  <span class="indicator-label">Registrar</span>
+                  <span class="indicator-label">Guardar Cambios</span>
                   <span class="spinner-border spinner-border-sm align-middle ms-2" *ngIf="isLoading | async"></span>
                   <!--<span class="indicator-progress">Please wait...
                   <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span> -->
