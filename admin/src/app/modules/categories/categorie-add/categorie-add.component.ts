@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CategorieService } from '../service/categorie.service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Toaster } from 'ngx-toast-notifications';
@@ -11,6 +11,7 @@ import { Toaster } from 'ngx-toast-notifications';
 export class CategorieAddComponent implements OnInit {
 
   @Output() CategorieC: EventEmitter<any> = new EventEmitter();
+  @Input() CATEGORIES:any = null;
 
   name:any = null;
 
@@ -18,6 +19,10 @@ export class CategorieAddComponent implements OnInit {
   FILE_PORTADA:any = null;
 
   isLoading:any;
+  selected_option:any = 1;
+  categorie_id:any = null;
+
+
   constructor(
     public categorieService: CategorieService,
     public toaster:Toaster,
@@ -42,15 +47,30 @@ export class CategorieAddComponent implements OnInit {
 
   store(){
 
-    if(!this.name || !this.FILE_PORTADA){
-      this.toaster.open({text: "Necesitas llenar todos los campos", caption: 'Validacion', type:'danger'})
-      return;
+    if(this.selected_option == 1){ //Creacion de Categoria
+      if(!this.name || !this.FILE_PORTADA){
+        this.toaster.open({text: "Necesitas llenar todos los campos", caption: 'Validacion', type:'danger'})
+        return;
+      }
+    }
+
+    if(this.selected_option == 2){ //Creacion de Subcategoria
+      if(!this.name || !this.categorie_id){
+        this.toaster.open({text: "Necesitas llenar todos los campos", caption: 'Validacion', type:'danger'})
+        return;
+      }
     }
 
     let formData = new FormData();
 
     formData.append("name",this.name);
-    formData.append("portada",this.FILE_PORTADA);
+    if(this.categorie_id){
+      formData.append("categorie_id",this.categorie_id);
+    }
+    if(this.FILE_PORTADA){
+      formData.append("portada",this.FILE_PORTADA);
+    }
+
 
     this.categorieService.registerCategorie(formData).subscribe((resp:any) => {
       console.log(resp);
@@ -60,4 +80,7 @@ export class CategorieAddComponent implements OnInit {
     })
   }
 
+  selectedOption(value:number){
+    this.selected_option = value;
+  }
 }
