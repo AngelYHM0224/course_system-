@@ -21,6 +21,9 @@ class UserGResource extends JsonResource
             "email" => $this->resource->email,
             "role" => $this->resource->role,
             "state" => $this->resource->state ?? 1,
+            "is_instructor" => $this->resource->is_instructor,
+            "profesion" => $this->resource->profesion,
+            "description" => $this->resource->description,
             "created_at" => $this->resource->created_at->format("Y-m-d h:i:s"),
             "avatar" => env("APP_URL")."storage/".$this->resource->avatar,
         ];
